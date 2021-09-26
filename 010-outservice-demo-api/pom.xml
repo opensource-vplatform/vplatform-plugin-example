@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.yindangu.plugin</groupId>
+	<artifactId>outservice-demo-api</artifactId>
+	<name>${project.groupId}-${project.artifactId}</name>
+	<packaging>jar</packaging>
+	<description>对外提供服务的demo接口</description>
+	<version>0.7.1</version>
+
+	<properties>
+ 
+	</properties>
+
+	<dependencies>
+		<!-- ////////////////对外提供服务的接口 尽量少依赖其他构件/////////////////// -->
+		 <dependency>
+  			<groupId>com.yindangu.v3.platform</groupId>
+  	  		<artifactId>plugin-business-api</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin><!-- 把依赖的包导出来，方便发布构件时选择 -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
