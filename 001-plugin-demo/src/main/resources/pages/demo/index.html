@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>平台调试例子</title>
+ </head>
+ <style rel="stylesheet" type="text/css">
+ .body1{ 
+	font-size: 12px;
+ }
+ .headerx{
+	margin:4px;
+	
+ }
+ .headerx a{
+	padding: 4px;
+	margin:4px;
+ }
+ a{
+	text-decoration: none;
+ }
+
+ .tablex{
+	border-collapse: collapse;
+ }
+ .th1,.tdx{
+	border: 1px solid #bbb; 
+	padding: 4px;
+	word-wrap:break-word;
+	word-break:break-all; 
+ }
+tr:nth-child(even) {
+	background-color: #eee;
+} 
+.inputx{
+	margin:4px;
+}
+
+.systeminfo{
+	width:100%; 
+	border:1px solid #808080;
+	margin-bottom: 10px;
+}
+.errmsg{
+	color:#f00;
+}
+.hide {
+   display: none;
+} 
+ </style>
+ <body class="body1">
+<h3>平台调试例子</h3>
+
+<h3>目的</h3>
+API使用参考，API例子覆盖面全，API交流样本，更新时效。
+
+<h3>不能100%保证正确</h3>
+这些例子都是平台开发时调试的例子 但由于精力关系，不能100%保证例子与平台api同步，但它的好处是覆盖面比较全，更新比较快，项目日常开发都可以按这些例子作为参考和交流。例如如果发生有错误，我们按这个例子作为交流的样本，讨论是否配置或者代码错误。如果有错误或者缺少例子，可以告诉我们，我们会及时修改和补充。
+
+<h3>例子规范：</h3>
+每个插件可能有很多场景，但每个插件都有一个ExampleXXX的主例子，其他的场景例子DemoXXX作为补充。(平台开发人员调试时请记得按照这个规范，否则太杂乱就到不大这个demo的本意了)
+
+<h3>例子入口在command</h3>
+验证是可以通过command作为入口，进行调试，触发代码 001-plugin-demo 是主要例子，其他都是按需要创建的例子
+<hr/>
+
+<table width="100%" class="tablex"> 
+	<tr style='height:0px'><td colspan='10'><!-- 占位 修改编译地址： com.toone.v3.platform-01core 的 vstoreDeveloperServer --></td></tr> 
+	<tr class='headerx'>
+		<th class='th1' style="width:30%">名称</th>
+		<th class='th1' style="width:35%">接口</th>
+		<th class='th1' style="width:35%">说明</th>
+	</tr> 
+	<tr>
+		<td class='tdx'><a href="timertask/manager.html" target="_blank">全局定时器</a></td>
+		<td class='tdx'>com.yindangu.v3.business.timer.ITimerManager</td>
+		<td class='tdx'>以半小时为最小粒度的定时器（使用场景:Task20210818059）</td>
+	</tr>  
+</table>
+
+<script type="text/javascript" src="../itop/common/jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+ 
+
+//]]>
+</script>
+ </body>
+</html>

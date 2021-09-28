@@ -1,34 +1,97 @@
 package com.yindangu.plugin.demo.timer;
 
+import java.io.Closeable;
+import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.Calendar;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.yindangu.v3.business.timer.ITimeVo;
+import com.yindangu.v3.business.timer.ITimerTask;
+import com.yindangu.v3.business.timer.TaskScene;
  
-class MyLogger{
-	private final Logger log;
-	private final String clazzName;
-	public MyLogger(Class<?>  clazz,boolean log4j) {
-		clazzName = clazz.getSimpleName();
-		if(log4j) {
-			log = LoggerFactory.getLogger(clazz);
+
+class RepeatTask implements ITimerTask{ 
+	private static final Logger log = LoggerFactory.getLogger(RepeatTask.class);
+	protected static void sleep(long millis) {
+		try {
+			Thread.sleep(millis);
 		}
-		else {
-			log = null;
-		}
-	}
-	public void info(String s) {
-		if(log == null) {
-			System.out.println(clazzName + " info:" + s);
-		}
-		else {
-			log.info(s);
+		catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
+	private static void close(Closeable os) {
+		if(os == null) {
+			return ;
+		}
+		try {
+			os.close();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private final String taskName;
+	public RepeatTask(String task) {
+		taskName = task;
+	}
+	@Override
+	public String getTaskName() { 
+		return taskName;
+	}
+
+	@Override
+	public TaskScene getTaskScene() { 
+		return TaskScene.local;
+	}
+
+	@Override
+	public void run(ITimeVo vo) { 
+		String s =getTaskName() + "--start--" +  vo.getDate();
+		log.info(s); 
+		sleep(6 * 60 * 1000);
+		Timestamp d = new Timestamp(System.currentTimeMillis());
+		
+		s = getTaskName() + "--end--" +  d.toString(); 
+		log.info(s);
+		
+	}	
 }
 
+
+class DistributedTask implements ITimerTask{
+	private static final Logger log = LoggerFactory.getLogger(DistributedTask.class);
+	private final String taskName;
+	public DistributedTask(String task) {
+		taskName = task;
+	}
+	@Override
+	public String getTaskName() { 
+		return taskName;
+	}
+
+	@Override
+	public TaskScene getTaskScene() { 
+		return TaskScene.distributed;
+	}
+
+	@Override
+	public void run(ITimeVo vo) { 
+		String s =getTaskName() + "--start--" +  vo.getDate();
+		//log.info(s);
+		RepeatTask.sleep(6 * 60 * 1000);
+		Timestamp d = new Timestamp(System.currentTimeMillis());
+		
+		s = getTaskName() + "*****-end-*****-" +  d.toString();
+		//log.info(s,new RuntimeException("============"));
+		log.info(s);
+		
+	}	
+}
 /**启动时间*/
 class RunTimeVo implements ITimeVo{
 	public enum Format{

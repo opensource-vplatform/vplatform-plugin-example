@@ -1,63 +1,62 @@
 package com.yindangu.plugin.demo.command;
  
+import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.yindangu.plugin.demo.service.consume.MathConsume;
 import com.yindangu.v3.business.plugin.business.api.httpcommand.FormatType;
 import com.yindangu.v3.business.plugin.business.api.httpcommand.IHttpCommand;
 import com.yindangu.v3.business.plugin.business.api.httpcommand.IHttpContext;
 import com.yindangu.v3.business.plugin.business.api.httpcommand.IHttpResultVo;
+import com.yindangu.v3.platform.plugin.util.VdsUtils;
 
 /**
- * 取外部服务测试
+ * 调试例子入口(command一般是作为响应请求)
  * @author jiqj
  *
  */
-public class MyHttpCommand implements IHttpCommand{
-	private static final Logger log = (Logger)java.util.logging.Logger.getLogger("MyHttpCommand");
-	public MyHttpCommand() {
-		
-	}
+public class PluginIndexCommand implements IHttpCommand{
+	private static final Logger log = LoggerFactory.getLogger(PluginIndexCommand.class);
 	@Override
 	public IHttpResultVo execute(IHttpContext context) {
-		IHttpResultVo vo = context.newResultVo();
 		HttpServletRequest req =context.getRequest();
-		String math = req.getParameter("math");
+		String execute = getParameter(req,"execute");
+		String message = "业务处理成功";
+		Object rs ;
+		try {
+			if(execute.length()==0 ) {
+				Timestamp t = new Timestamp(System.currentTimeMillis());
+				rs = "默认请求返回:" + t.toString();
+			} 
+			else {
+				message ="不能识别的操作(execute):" + execute;
+				rs = null;
+			}
+		}
+		catch(Exception e) {
+			message = execute + ")出错:" + e.getMessage();
+			log.error(message,e);
+			rs = null;
+		}
+		//////////////////业务处理结果///////////////////
+		Map<String,Object> success = new HashMap<String,Object>();
+		success.put("message", message);
+		success.put("business", rs);
+		success.put("state", Boolean.valueOf(rs == null));
 		
-		if("abs".equalsIgnoreCase(math)) {
-			int x = toInt(req.getParameter("x"),-99);
-			MathConsume m = new MathConsume();
-			int rs = m.abs(x);
-			vo.setValueType(FormatType.Json)
-			.setValue("{\"name\":\"math参数:"+ math +"\",\"result\":" + rs + "}")
-		;
-		}
-		else if("max".equalsIgnoreCase(math)) {
-			int x = toInt(req.getParameter("x"),-99);
-			int y = toInt(req.getParameter("y"),-98);
-			MathConsume m = new MathConsume();
-			int rs = m.max(x,y);
-			vo.setValueType(FormatType.Json)
-				.setValue("{\"name\":\"math参数:"+ math +"\",\"result\":" + rs + "}")
-			;
-		}
-		else {
-			vo.setValueType(FormatType.Json)
-			.setValue("{\"name\":\"math参数不能识别:"+ math +"\",\"entry\":\"com.yindangu.plugin.demo.function.NumberUpperFunc\",\"code\":\"numberConvertFunc\",\"desc\":\"数字转汉字\",\"output\":{\"type\":\"Char\",\"desc\":\"汉字大写\"},\"inputs\":[{\"default\":null,\"type\":\"Integer\",\"desc\":\"数字\",\"required\":true}]}")
-			//.newDownload()
-			;
-		}
+		IHttpResultVo vo = context.newResultVo();
+		vo.setValue(VdsUtils.json.toJson(success));
+		vo.setValueType(FormatType.Json);
 		return vo;
 	}
-	private int toInt(String n,int def) {
-		if(n == null || n.length() ==0) {
-			return def;
-		}
-		else {
-			return Integer.parseInt(n);
-		}
+	private String getParameter(HttpServletRequest req,String key) {
+		String opt = req.getParameter(key);
+		return (opt == null ? "": opt.trim());
 	}
 
 }
