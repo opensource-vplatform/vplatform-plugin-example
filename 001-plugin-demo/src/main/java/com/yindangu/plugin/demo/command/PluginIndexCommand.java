@@ -33,6 +33,16 @@ public class PluginIndexCommand implements IHttpCommand{
 				Timestamp t = new Timestamp(System.currentTimeMillis());
 				rs = "默认请求返回:" + t.toString();
 			} 
+			else if("function".equalsIgnoreCase(execute)) { //执行一个函数
+				String exp = getParameter(req,"exp"); //表达式 
+				rs = (new ExecuteFunction()).execute(exp);
+			}
+			else if("rule".equalsIgnoreCase(execute)) {  
+				String groupid = getParameter(req,"groupid");
+				String compoent = getParameter(req,"compoent");
+				String pluginCode = getParameter(req,"code");
+				rs = (new ExecuteRule()).execute(groupid,compoent,pluginCode);
+			}
 			else {
 				message ="不能识别的操作(execute):" + execute;
 				rs = null;
@@ -47,7 +57,7 @@ public class PluginIndexCommand implements IHttpCommand{
 		Map<String,Object> success = new HashMap<String,Object>();
 		success.put("message", message);
 		success.put("business", rs);
-		success.put("state", Boolean.valueOf(rs == null));
+		success.put("state", Boolean.valueOf(rs != null));
 		
 		IHttpResultVo vo = context.newResultVo();
 		vo.setValue(VdsUtils.json.toJson(success));
@@ -57,6 +67,5 @@ public class PluginIndexCommand implements IHttpCommand{
 	private String getParameter(HttpServletRequest req,String key) {
 		String opt = req.getParameter(key);
 		return (opt == null ? "": opt.trim());
-	}
-
+	}	
 }

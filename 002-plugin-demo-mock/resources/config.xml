@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config title="二开文件存储服务配置">
+	<property key="acquireLockTimeout" des="获取锁超时时间，单位（秒）">30</property>
+	<property key="transactionTimeout" des="事务超时时间，单位（秒）">300</property>
+</config>

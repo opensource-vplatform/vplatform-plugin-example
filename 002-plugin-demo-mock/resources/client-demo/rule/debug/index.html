@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>规则验证样例</title>
+    <script src="http://liangzc:8999/module-operation!executeOperation?operation=vds-sdk-js"></script>
+    <script src="../dist/NumToChineseRule.js"></script>
+    <script src="./rule.js"></script>
+    <script>
+        function Rule(){
+            var num1=document.getElementById("numC").value;
+            var num2=document.getElementById("numD").value;
+            NumToChineseRule(num1, num2, function(val1,val2){
+                document.getElementById("numCO").value = val1;
+                document.getElementById("numDO").value = val2;
+            })
+        }
+    </script>
+</head>
+<body>
+    ===================规则样例=================<br />
+    入参1：<input id="numC" type="text" value="482">转换结果：<input id="numCO" type="text"><br />
+    入参2：<input id="numD" type="text" value="699201">转换结果：<input id="numDO" type="text"><br />
+    <button onclick="Rule()">数字转大写（规则）</button>
+</body>
+</html>
