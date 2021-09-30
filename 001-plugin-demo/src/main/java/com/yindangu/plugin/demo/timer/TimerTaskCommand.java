@@ -141,22 +141,26 @@ public class TimerTaskCommand implements IHttpCommand{
 		tm.setTaskState(taskName, state);
 		return state;
 	} 
+
+		
 	/**
-	 * 返回运行时间
+	 * 注册定时任务
 	 * @return
 	 */
 	private int doRegister(String times) {
-		int time =(times ==null || times.length() ==0 ? 10: Integer.parseInt(times));
-		ITimerManager tm = VDS.getIntance().getTimerManager();
+		ITimerManager tm = VDS.getIntance().getTimerManager();//取得任务管理器
 		String[] tasks = {"repeatTask","singleTaskHalf","singleTask","distributedTask"};
 		for(String t : tasks) {
 			tm.unregister(t);
 		}
-		
-		tm.registerRepeatTask(new RepeatTask(tasks[0]));
-		tm.registerSingleTaskHalf(new RepeatTask(tasks[1]),time);
-		tm.registerSingleTask(new RepeatTask(tasks[2]),time);
-		tm.registerSingleTask(new DistributedTask(tasks[3]),time);
+		int time =1;//凌晨1点
+		if(times !=null && times.length()>0) {
+			time = Integer.parseInt(times);
+		}
+		tm.registerRepeatTask(new LocalTask(tasks[0])); //多次执行的任务
+		tm.registerSingleTaskHalf(new LocalTask(tasks[1]),time); //凌晨1:30执行
+		tm.registerSingleTask(new LocalTask(tasks[2]),time);//凌晨1:00执行
+		tm.registerSingleTask(new DistributedTask(tasks[3]),time);//凌晨1:00执行分布式任务
 		
 		return time;
 	}
