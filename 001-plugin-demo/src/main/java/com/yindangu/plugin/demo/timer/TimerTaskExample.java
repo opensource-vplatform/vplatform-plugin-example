@@ -26,6 +26,13 @@ class LocalTask implements ITimerTask{
 
 	@Override
 	public void run(ITimeVo vo) { 
+		if(vo.getDay() % 2 == 0) {
+			//每2天执行
+		}
+		if(vo.getHour() % 4 ==0) {
+			//每4小时执行
+		}
+		// 自己定义执行时间
 		String s =getTaskName() + "--start--" +  vo.getDate();
 		log.info(s); 
 		
