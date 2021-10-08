@@ -32,7 +32,7 @@ public class SystemStartupExample implements ISystemStartupListener{
 		try {
 			log.info("*********SystemStartupExample*******");
 			log.info("执行系统全部启动完成时触发（系统完全可以访问）");
-			//doRegister("10");
+			doRegister("10");
 		}
 		catch(RuntimeException e) {
 			log.info("****应该报错的看下平台的健壮性b********",e);
