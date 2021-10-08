@@ -9,7 +9,7 @@ import com.yindangu.v3.business.plugin.business.api.file.storage.IFileStorageSer
 
 public class MyFileStorageService implements IFileStorageService {
 
-	public static String FileStorage_Code = "my_fss";
+	public static final String FileStorage_Code = "my_fss";
 	
 	@Override
 	public IAppFileInfo upload(File file, IAppFileInfo appFileInfo) {
