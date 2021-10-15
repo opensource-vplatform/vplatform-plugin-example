@@ -32,7 +32,13 @@ class ExecuteRule {
 		String paramsJson = getParamsMetas();
 		Map<String, Object> paramsMeta= VdsUtils.json.fromJson(paramsJson);
 		
-		
+		try {
+			log.info("需要引入 plugin-demo-mock 包:" +  IExecuteRuleCommandParams.class.getName());
+		}
+		catch(NoClassDefFoundError e) {
+			//log.error("IExecuteRuleCommandParams接口不存在，请引入 com.yindangu.plugin-plugin-demo-mock-xx.jar 包");
+			throw new RuntimeException("IExecuteRuleCommandParams接口不存在，请引入 com.yindangu.plugin-plugin-demo-mock-xx.jar 包",e);
+		}
 		IExecuteRuleCommandParams pars = new IExecuteRuleCommandParams() {
 			@Override
 			public Map<String, Object> getRuleConfig() { 

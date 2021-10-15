@@ -62,7 +62,8 @@ Git地址: git@github.com:opensource-vplatform/vplatform-plugin-example.git
 每个插件可能有很多场景，但每个插件都有一个ExampleXXX的主例子，其他的场景例子DemoXXX作为补充。(平台开发人员调试时请记得按照这个规范，否则太杂乱就到不大这个demo的本意了)
 
 <h3>例子入口在command</h3>
-验证是可以通过command作为入口，进行调试，触发代码 001-plugin-demo 是主要例子，其他都是按需要创建的例子
+验证是可以通过command作为入口，进行调试，触发代码 001-plugin-demo 是主要例子，其他都是按需要创建的例子<br/>
+代码入口：PluginIndexCommand.java
 <hr/>
 
 
@@ -95,26 +96,17 @@ Git地址: git@github.com:opensource-vplatform/vplatform-plugin-example.git
 		<td class='tdx'>系统启动事件</td>
 		<td class='tdx'>实现com.yindangu.v3.business.plugin.business.api.system.ISystemStartupListener接口</td>
 		<td class='tdx'>实例请看 SystemStartupExample.java</td>
-	</tr>  
+	</tr>
+	<tr>
+		<td class='tdx'>导入业务数据(<a href="#" onclick="doImportXMLData('rule')">导入</a>)</td>
+		<td class='tdx'>API接口：VDS.getMis().importBusinessXML()方法</td>
+		<td class='tdx'>对应"系统高级配置/数据管理/系统初始化数据导出XML"的数据格式<br/>实例请看 MisExample.java</td>
+	</tr>
 </table>
 
 <script type="text/javascript" src="../itop/common/jquery/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
-/**函数*/
-function doFunction(fn){
-	var pars ={"execute":"function"};
-	if(fn=="rule"){
-		pars.execute="rule";
-	}
-	post(pars,function(result){
-		if(result.state){
-			alert(fn + "正常执行:" + result.business);
-		}
-		else{
-			alert(fn +"执行不成功:" + result.message);
-		}
-	});
-}
+/********************公共方法**********************************/
 function post(pars,callFn){
 	//operation=rocksMonitor&type=workspace&prefix=&fields=serializedsize
 	pars =pars ||　{};
@@ -133,6 +125,35 @@ function post(pars,callFn){
 	});
 }
 
+/******************************************************/
+/**函数-规则*/
+function doFunction(fn){
+	var pars ={"execute":"function"};
+	if(fn=="rule"){
+		pars.execute="rule";
+	}
+	post(pars,function(result){
+		if(result.state){
+			alert(fn + "正常执行:" + result.business);
+		}
+		else{
+			alert(fn +"执行不成功:" + result.message);
+		}
+	});
+}
+
+/**导入业务数据*/
+function doImportXMLData(fn){
+	var pars ={"execute":"importXMLData"};
+	post(pars,function(result){
+		if(result.state){
+			alert("导入业务数据正常执行:" + result.business);
+		}
+		else{
+			alert("导入业务数据执行不成功:" + result.message);
+		}
+	});
+}
 //]]>
 </script>
  </body>

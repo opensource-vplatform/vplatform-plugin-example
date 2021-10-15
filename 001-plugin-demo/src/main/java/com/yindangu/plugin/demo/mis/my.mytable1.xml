@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+<table  name="my.mytable1" chineseName="my.mytable1" desc="" isQuery="false" enable="true">
+<records enable="true" replace="true">
+<record>
+<id><![CDATA[a]]></id>
+<code><![CDATA[a]]></code>
+<name><![CDATA[a]]></name>
+<age><![CDATA[11]]></age>
+</record>
+<record>
+<id><![CDATA[b]]></id>
+<code><![CDATA[b]]></code>
+<name><![CDATA[b]]></name>
+<age><![CDATA[88]]></age>
+</record>
+</records>
+</table>
+</root>
+

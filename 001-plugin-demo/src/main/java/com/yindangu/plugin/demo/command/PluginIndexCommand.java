@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.yindangu.plugin.demo.mis.MisExample;
 import com.yindangu.v3.business.plugin.business.api.httpcommand.FormatType;
 import com.yindangu.v3.business.plugin.business.api.httpcommand.IHttpCommand;
 import com.yindangu.v3.business.plugin.business.api.httpcommand.IHttpContext;
@@ -43,12 +44,16 @@ public class PluginIndexCommand implements IHttpCommand{
 				String pluginCode = getParameter(req,"code");
 				rs = (new ExecuteRule()).execute(groupid,compoent,pluginCode);
 			}
+			else if("importXMLData".equalsIgnoreCase(execute)) {//导入数据   
+				String err = (new MisExample()).importXMLData();
+				rs = (err==null? "成功": err);
+			}
 			else {
 				message ="不能识别的操作(execute):" + execute;
 				rs = null;
 			}
 		}
-		catch(Exception e) {
+		catch(Throwable e) {
 			message = execute + ")出错:" + e.getMessage();
 			log.error(message,e);
 			rs = null;
