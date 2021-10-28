@@ -19,29 +19,29 @@ API使用参考，API例子覆盖面全，API交流样本，更新时效。
 ### 代码地址：
 国内gitee地址,不需要翻墙，不允许提交代码，但可能有延迟。
 #### 1)V-DevSuite开发文档
-国外：https://yindangu.gitbook.io/v-devsuite/
-国内： https://gitee.com/opensource-vplatform/v-devsuite/blob/master/SUMMARY.md
+国外：https://yindangu.gitbook.io/v-devsuite/<br/>
+国内： https://gitee.com/opensource-vplatform/v-devsuite/blob/master/SUMMARY.md<br/>
 
 #### 2)示例代码
-国外：https://github.com/opensource-vplatform/vplatform-plugin-example.git
-国内： https://gitee.com/opensource-vplatform/vplatform-plugin-example.git
+国外：https://github.com/opensource-vplatform/vplatform-plugin-example.git<br/>
+国内： https://gitee.com/opensource-vplatform/vplatform-plugin-example.git<br/>
 
 #### 3)后端规则代码
-国外：https://github.com/opensource-vplatform/vplatform-plugin-rule-server.git
-国内：https://gitee.com/opensource-vplatform/vplatform-plugin-rule-server.git
+国外：https://github.com/opensource-vplatform/vplatform-plugin-rule-server.git<br/>
+国内：https://gitee.com/opensource-vplatform/vplatform-plugin-rule-server.git<br/>
 
 #### 4)前端规则代码
-国外：https://github.com/opensource-vplatform/vplatform-plugin-rule-client.git
-国内：https://gitee.com/opensource-vplatform/vplatform-plugin-rule-client.git
+国外：https://github.com/opensource-vplatform/vplatform-plugin-rule-client.git<br/>
+国内：https://gitee.com/opensource-vplatform/vplatform-plugin-rule-client.git<br/>
 
 #### 5)后端函数
-国外：https://github.com/opensource-vplatform/vplatform-plugin-function-server.git
-国内：https://gitee.com/opensource-vplatform/vplatform-plugin-function-server.git
+国外：https://github.com/opensource-vplatform/vplatform-plugin-function-server.git<br/>
+国内：https://gitee.com/opensource-vplatform/vplatform-plugin-function-server.git<br/>
 
 #### 6)前端函数
-国外：https://github.com/opensource-vplatform/vplatform-plugin-function-client.git
-国内：https://gitee.com/opensource-vplatform/vplatform-plugin-function-client.git
+国外：https://github.com/opensource-vplatform/vplatform-plugin-function-client.git<br/>
+国内：https://gitee.com/opensource-vplatform/vplatform-plugin-function-client.git<br/>
 
 #### 7)web请求command
-国外：https://gitee.com/opensource-vplatform/vplatform-plugin-command.git
-国内：https://github.com/opensource-vplatform/vplatform-plugin-command.git
+国外：https://gitee.com/opensource-vplatform/vplatform-plugin-command.git<br/>
+国内：https://github.com/opensource-vplatform/vplatform-plugin-command.git<br/>
