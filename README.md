@@ -9,7 +9,7 @@ API使用参考，API例子覆盖面全，API交流样本，更新时效。
 
 ### 例子规范：
 
-每个插件可能有很多场景，但每个插件都有一个XXXExample的主例子，其他的场景例子XXXDemo作为补充。(平台开发人员调试时请记得按照这个规范，否则太杂乱就到不大这个demo的本意了)
+每个插件可能有很多场景，但每个插件都有一个XXXExample的主例子，其他的场景例子XXXDemo作为补充。(平台开发人员调试时请记得按照这个规范，否则太杂乱就达不到这个example项目的本意了)
 
 
 ### 例子入口在command
@@ -19,7 +19,7 @@ API使用参考，API例子覆盖面全，API交流样本，更新时效。
 ### 代码地址：
 国内gitee地址,不需要翻墙，不允许提交代码，但可能有延迟。
 #### 1)V-DevSuite开发文档
-国外：https://yindangu.gitbook.io/v-devsuite/<br/>
+国外：https://yindangu.gitbook.io/v-devsuite/ (推荐)<br/>
 国内： https://gitee.com/opensource-vplatform/v-devsuite/blob/master/SUMMARY.md<br/>
 
 #### 2)示例代码
