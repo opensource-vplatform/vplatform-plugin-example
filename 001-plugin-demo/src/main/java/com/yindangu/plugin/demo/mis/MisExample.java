@@ -14,16 +14,19 @@ public class MisExample {
 	 * @return
 	 */
 	public String importXMLData() {
-		InputStream is1 =null,is2 = null;
+		InputStream is1 =null,is2 = null,is3= null;
 		try {
 			is1 = MisExample.class.getResourceAsStream("my.mytable1.xml");
 			is2 = MisExample.class.getResourceAsStream("my.mytable2.xml");
+			is3 = MisExample.class.getResourceAsStream("vbase_organization.v_sys_Org.xml");
+			
 			//对应 执行系统后台"系统高级配置/数据管理/系统初始化数据导出XML"的备份的数据格式
 			String xml1 = readStream(is1);
 			String xml2 = readStream(is2);
+			String xml3 = readStream(is3);
 			
 			IMis mis = VDS.getIntance().getMis();
-			mis.importBusinessXML(Arrays.asList(xml1,xml2));
+			mis.importBusinessXML(Arrays.asList(xml3));
 			
 			return null;
 		}catch(IOException e) {
@@ -32,6 +35,7 @@ public class MisExample {
 		finally {
 			close(is1);
 			close(is2);
+			close(is3);
 		}
 	}
 	private String readStream(InputStream is)  throws IOException{

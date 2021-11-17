@@ -45,3 +45,19 @@ API使用参考，API例子覆盖面全，API交流样本，更新时效。
 #### 7)web请求command
 国外：https://gitee.com/opensource-vplatform/vplatform-plugin-command.git<br/>
 国内：https://github.com/opensource-vplatform/vplatform-plugin-command.git<br/>
+
+### 开发规范
+#### 二次开发资源包规范
+https://docs.qq.com/doc/DRGhTTEdoQlNZWVRY </br>
+
+#### 函数开发规范
+https://docs.qq.com/doc/DRE5yVHNVdEdjV3Za </br>
+
+#### 规则开发规范
+https://docs.qq.com/doc/DRHRNS3pubkN2WFda </br>
+
+#### 编辑器规范
+https://docs.qq.com/doc/DREtEV1RRdG9MRm9S </br>
+
+#### 发布文件格式规范
+https://docs.qq.com/doc/DVlpNSkpMTXh1WUFH </br>
