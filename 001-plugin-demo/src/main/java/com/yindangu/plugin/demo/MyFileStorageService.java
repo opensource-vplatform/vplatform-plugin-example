@@ -29,11 +29,6 @@ public class MyFileStorageService implements IFileStorageService {
 		return null;
 	}
 
-	@Override
-	public void deleteFile(String fileId) {
-		// TODO Auto-generated method stub
-		//VDS.getIntance().getPreferencesManager().getProperty(FileStorage_Code, "url");
-	}
 
 	@Override
 	public void deleteFiles(String[] fileIds) {
