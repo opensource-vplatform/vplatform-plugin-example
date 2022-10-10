@@ -19,7 +19,8 @@ API使用参考，API例子覆盖面全，API交流样本，更新时效。
 ### 代码地址：
 国内gitee地址,不需要翻墙，不允许提交代码，但可能有延迟。
 #### 1)V-DevSuite开发文档
-国外：https://yindangu.gitbook.io/v-devsuite/ (推荐)<br/>
+官方: http://vstore-developer.yindangu.com/javadoc/index.html (推荐)<br/>
+国外：https://yindangu.gitbook.io/v-devsuite/ <br/>
 国内： https://gitee.com/opensource-vplatform/v-devsuite/blob/master/SUMMARY.md<br/>
 
 #### 2)示例代码
